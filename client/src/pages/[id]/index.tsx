@@ -37,9 +37,11 @@ export async function getStaticProps({ params }: any) {
 
   // redirect to 404 if product not found
   if (!product) {
-    return {
-      notFound: true
-    };
+  info(`getStaticProps: Product not exist: ${params?.id}`);
+  return {
+      notFound: true,
+      revalidate: 1 // In seconds
+  };
   }
 
   return {
