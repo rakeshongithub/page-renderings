@@ -2,7 +2,7 @@ import ProductDetail from '@/components/ProductDetail';
 import { Product } from '@/models/product';
 import { getProductDetail } from '@/services/productDetailService';
 import { getProductList } from '@/services/productListService';
-import { DD_MM_YYYY } from '@/utils/constants';
+import { DD_MM_YYYY, REVALIDATE_TIME } from '@/utils/constants';
 import { info } from '@/utils/logger';
 import dayjs from 'dayjs';
 
@@ -52,7 +52,7 @@ export async function getStaticProps({ params }: any) {
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
     // - At most once every 10 seconds
-    revalidate: 15 // In seconds
+    revalidate: REVALIDATE_TIME // In seconds
   };
 }
 
@@ -61,7 +61,7 @@ export default function Home({ product, generationTime }: { product: Product; ge
     <>
       <header className="page-header">{generationTime}</header>
       <main className="container">
-        <h1>SSG - Product Detail View</h1>
+        <h1>ISR - Incremental Static Regeneration</h1>
         <hr />
         <ProductDetail product={product} />
       </main>

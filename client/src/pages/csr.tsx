@@ -23,7 +23,7 @@ export default function Demo() {
   return (
     <>
       <main className="container">
-        <h1>Page Rendering Techniques</h1>
+        <h1>CSR - Client Side Rendering</h1>
         <hr />
         {products?.length ? <ProductList products={products} /> : <Preloader />}
       </main>

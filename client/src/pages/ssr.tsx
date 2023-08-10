@@ -6,7 +6,6 @@ import { NextApiResponse } from 'next';
 
 export async function getServerSideProps({ res }: { res: NextApiResponse }) {
   info('getServerSideProps: Requesting for product list data');
-  res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
 
   // fetching product on server
   const products: Product[] = await getProductList(8);
@@ -29,7 +28,7 @@ export default function Home({ products }: { products: Product[] }) {
   return (
     <>
       <main className="container">
-        <h1>SSR - Product List</h1>
+        <h1>SSR - Server Side Rendering</h1>
         <hr />
         <ProductList products={products} />
       </main>
